@@ -1,0 +1,23 @@
+pandas
+numpy
+scikit-learn
+tensorflow
+keras
+torch
+seaborn
+matplotlib
+yfinance
+nltk
+beautifulsoup4
+requests
+deap
+gym
+stable-baselines3
+finrl
+PyPortfolioOpt
+textblob
+gensim
+plotly
+dash
+sqlalchemy
+psycopg2-binary  # or 'sqlite3' for SQLite
