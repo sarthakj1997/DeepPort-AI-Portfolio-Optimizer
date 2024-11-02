@@ -14,7 +14,7 @@ class SentimentAnalysis:
         self.session = get_session(self.engine)
     
     def get_news_headlines(self, ticker):
-        print("start_func")
+        
         url = f"https://finviz.com/quote.ashx?t={ticker}"
         req = requests.get(url, headers={'User-Agent': 'Mozilla/5.0'})
         soup = BeautifulSoup(req.content, 'html.parser')
@@ -27,12 +27,12 @@ class SentimentAnalysis:
                 #date_data = date_data.replace('Today', datetime.now().strftime('%b-%d-%y'))
                 # date_data = datetime.strptime(date_data, '%b-%d-%y %I:%M%p')
                 if len(date_data) > 8:
-                    print("if")
-                    date_data = date_data.replace('Today', datetime.now().strftime('%b-%d-%y'))
+                    
+                    date_data = date_data.replace('Today', datetime.datetime.now().strftime('%b-%d-%y'))
                     date = datetime.datetime.strptime(date_data, '%b-%d-%y %I:%M%p')
                     
                 else:
-                    print("else")
+                    
                     date = datetime.datetime.strptime(date_data, '%I:%M%p')
                     date = datetime.datetime.combine(datetime.datetime.now().date(), date.time())
                 headlines.append((date, text))
