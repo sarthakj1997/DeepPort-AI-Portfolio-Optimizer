@@ -21,3 +21,4 @@ plotly
 dash
 sqlalchemy
 psycopg2-binary  # or 'sqlite3' for SQLite
+statsmodels
