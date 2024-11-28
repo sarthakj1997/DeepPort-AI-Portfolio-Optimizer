@@ -11,7 +11,7 @@ tests/.cache/v/cache/lastfailed
 .vscode/settings.json
 data/
 models/
-
+.vscode/
 ##
 ## R Section - See https://github.com/github/gitignore/blob/master/R.gitignore
 ##
