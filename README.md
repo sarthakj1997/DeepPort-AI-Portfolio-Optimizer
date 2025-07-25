@@ -1,4 +1,4 @@
-# Portfolio Optimization Project
+# Portfolio Optimization 
 
 This project focuses on optimizing portfolio allocation using classical financial models, machine learning techniques, and reinforcement learning. The objective is to achieve better risk-adjusted returns by implementing, comparing, and analyzing various strategies.
 
