@@ -22,10 +22,16 @@ def calculate_returns_volatility(tickers, start_date="2013-01-01", end_date="202
     """
     metrics = {}
     for ticker in tickers:
-        data = yf.download(ticker, start=start_date, end=end_date)
+        data = yf.download(ticker, start=start_date, end=end_date, 
+                           progress=False, auto_adjust=False, threads=True)
         if data.empty:
             continue
-        data['Daily Return'] = data['Adj Close'].pct_change()
+        if 'Adj Close' in data.columns:
+            data['Daily Return'] = data['Adj Close'].pct_change()
+        else:
+            print(f"{ticker}: 'Adj Close' column not found. Using Close")
+            data['Daily Return'] = data['Close'].pct_change()
+            continue
         
         # Calculate annualized return and volatility
         annualized_return = data['Daily Return'].mean() * 252

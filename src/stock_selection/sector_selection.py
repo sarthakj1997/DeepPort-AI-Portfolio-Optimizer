@@ -19,7 +19,7 @@ def fetch_sp500_sectors():
     
 def calculate_annualized_return(ticker, start_date="2013-01-01", end_date="2023-01-01"):
     try:
-        data = yf.download(ticker, start=start_date, end=end_date)
+        data = yf.download(ticker, start=start_date, end=end_date, progress=False, auto_adjust=False, threads=True)
         # Convert start_date and end_date to datetime objects
         start_date = datetime.strptime(start_date, "%Y-%m-%d") +timedelta(days=1)
         end_date = datetime.strptime(end_date, "%Y-%m-%d") - timedelta(days=2)
@@ -44,11 +44,16 @@ def select_stocks_by_sector(stocks_per_sector=3, ticker_file="data/selected_tick
                             test_start_date="2023-01-01", test_end_date="2024-01-01"):
 
     sp500_sectors = fetch_sp500_sectors()  # Assuming this function fetches sector data with tickers
+    print("S&P 500 sectors fetched successfully.")
     selected_stocks = set()
 
     # Add key stocks to ensure they're included
     if key_stocks:
         selected_stocks.update(key_stocks)
+        print("Key stocks added" )
+
+    for ticker in key_stocks:
+        print(f"Key stock: {ticker}")
 
     # Select top-performing stocks from each sector
     for sector in sp500_sectors['Sector'].unique():
